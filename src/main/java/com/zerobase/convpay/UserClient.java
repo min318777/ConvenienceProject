@@ -8,15 +8,22 @@ import com.zerobase.convpay.dto.PayResponse;
 import com.zerobase.convpay.service.ConveniencePayService;
 import com.zerobase.convpay.type.ConvenienceType;
 import com.zerobase.convpay.type.PayMethodType;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class UserClient {
     public static void main(String[] args) {
 
         // '사용자' -> 편결이 -> 머니
-        //
+        ApplicationContext applicationContext =
+                new AnnotationConfigApplicationContext(ApplicationConfig.class);
+
+        ConveniencePayService conveniencePayService =
+                applicationContext.getBean("conveniencePayService", ConveniencePayService.class);
+
         ApplicationConfig applicationConfig = new ApplicationConfig();
         //ConveniencePayService conveniencePayService = new ConveniencePayService(); 클라이어트는 ApplicationConfig라는 설정파일을 통해서 전체 어플리케이션을 사용할 수 있도록 한다.
-        ConveniencePayService conveniencePayService = applicationConfig.conveniencePayServiceDiscountPayMethod();
+        //ConveniencePayService conveniencePayService = applicationConfig.conveniencePayServiceDiscountPayMethod();
 
         // g25, 결제 1000원
         PayRequest payRequest = new PayRequest(PayMethodType.CARD,

@@ -5,6 +5,7 @@ import com.zerobase.convpay.dto.PayCancelResponse;
 import com.zerobase.convpay.dto.PayRequest;
 import com.zerobase.convpay.dto.PayResponse;
 import com.zerobase.convpay.type.*;
+import org.springframework.context.annotation.Configuration;
 
 import java.util.HashMap;
 import java.util.Map;
