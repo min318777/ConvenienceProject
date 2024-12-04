@@ -1,5 +1,6 @@
 package com.zerobase.convpay;
 
+import com.zerobase.convpay.config.ApplicationConfig;
 import com.zerobase.convpay.dto.PayCancelRequest;
 import com.zerobase.convpay.dto.PayCancelResponse;
 import com.zerobase.convpay.dto.PayRequest;
@@ -12,8 +13,10 @@ public class UserClient {
     public static void main(String[] args) {
 
         // '사용자' -> 편결이 -> 머니
-
-        ConveniencePayService conveniencePayService = new ConveniencePayService();
+        //
+        ApplicationConfig applicationConfig = new ApplicationConfig();
+        //ConveniencePayService conveniencePayService = new ConveniencePayService(); 클라이어트는 ApplicationConfig라는 설정파일을 통해서 전체 어플리케이션을 사용할 수 있도록 한다.
+        ConveniencePayService conveniencePayService = applicationConfig.conveniencePayServiceDiscountPayMethod();
 
         // g25, 결제 1000원
         PayRequest payRequest = new PayRequest(PayMethodType.CARD,
